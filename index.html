@@ -4,13 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>My Digital Portfolio</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Serif+4:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap">
 <style>
 :root{
   --bg:#f7f1ed; --surface:#ffffff; --ink:#491f40; --muted:#6e4f66; --line:#dbccc6;
   --accent:#e0c188; --accent-strong:#b8702a; --accent-ink:#491f40; --nav:#491f40; --nav-ink:#f7f1ed;
-  --head:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
-  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --terra:#d6866b; --rose:#dba79c; --mustard:#ce8936;
+  --head:"Fraunces",Georgia,"Times New Roman",serif;
+  --body:"DM Sans","Helvetica Neue",Arial,sans-serif;
   box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
 }
 @media (prefers-color-scheme:dark){
@@ -18,75 +19,125 @@
 }
 :root[data-theme="dark"]{--bg:#1d0b1a;--surface:#2d1429;--ink:#f3e9e4;--muted:#cdb4b0;--line:#5a3552;--accent-strong:#e0c188;--nav:#140610;--nav-ink:#f3e9e4}
 *{box-sizing:border-box}
+html,body{height:100%;margin:0}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
-body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.65 var(--body)}
+body{background:var(--bg);color:var(--ink);font:400 clamp(15px,1.05vw + 8px,18px)/1.55 var(--body);display:flex;flex-direction:column;overflow:hidden}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--nav);z-index:10}
-nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--nav);display:flex;align-items:center;gap:1rem;padding:.5rem 1.25rem;overflow-x:auto}
-.brand{font:800 1.15rem var(--head);color:var(--accent);margin-right:auto;white-space:nowrap}
-nav a{font:500 .95rem var(--head);color:var(--nav-ink);text-decoration:none;padding:.5rem .8rem;border-radius:999px;white-space:nowrap}
-nav a:hover{background:#ffffff1f}
-nav a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-nav a.active{background:var(--accent);color:var(--accent-ink)}
-main{max-width:960px;margin:0 auto;padding:2.5rem 1.25rem 4rem}
-.page{display:none}.page.show{display:block}
-h1,h2,h3{font-family:var(--head);line-height:1.1;margin:0}
-h1{font-size:clamp(2.6rem,8vw,5rem);font-weight:800;letter-spacing:-.02em}
-h2{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:700;margin-bottom:1.5rem}
-h3{font-size:1.2rem;font-weight:700}
-p{max-width:62ch}
-.hero{display:grid;grid-template-columns:1fr 240px;gap:2.5rem;align-items:center;padding:1.5rem 0}
-.photo{width:240px;aspect-ratio:4/5;border-radius:120px 120px 16px 16px;background:var(--accent);display:grid;place-items:center;font:800 5rem var(--head);color:var(--accent-ink)}
-.lead{font-size:1.3rem;color:var(--muted);margin:1.2rem 0 1.8rem}
-.btn{display:inline-block;font:700 1rem var(--head);background:var(--ink);color:var(--bg);padding:.8rem 1.4rem;border-radius:999px;text-decoration:none}
-.btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-dl{display:grid;grid-template-columns:max-content 1fr;gap:0;margin:0;border-top:1px solid var(--line)}
-dt,dd{margin:0;padding:.9rem 0;border-bottom:1px solid var(--line)}
-dt{font:700 1rem var(--head);padding-right:2.5rem}
-.timeline{list-style:none;margin:0;padding:0 0 0 1.5rem;border-left:3px solid var(--accent)}
-.timeline li{position:relative;padding-bottom:2rem}
-.timeline li::before{content:"";position:absolute;left:calc(-1.5rem - 8px);top:.45rem;width:13px;height:13px;border-radius:50%;background:var(--bg);border:3px solid var(--accent)}
-.when{font:500 .95rem var(--head);color:var(--muted)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1.4rem}
-.card h3{margin-bottom:.4rem}
-.card p{margin:.4rem 0 0;color:var(--muted)}
-.badge{font:800 2.4rem var(--head);color:var(--accent-strong)}
-.member{display:flex;gap:1rem;align-items:flex-start}
-.avatar{flex:none;width:56px;height:56px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;font:700 1.3rem var(--head)}
-footer{text-align:center;color:var(--muted);font-size:.9rem;padding:2rem 1rem}
-@media (max-width:700px){.hero{grid-template-columns:1fr}.photo{width:170px;order:-1}dl{grid-template-columns:1fr}dt{border-bottom:0;padding-bottom:0}}
-/* animations */
-.photo{background:conic-gradient(from 0deg,#d6866b,#dba79c,#ce8936,#e0c188,#d6866b);background-size:100% 100%;box-shadow:0 0 0 6px var(--ink);animation:float 5s ease-in-out infinite,spin-hue 8s linear infinite}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
-@keyframes spin-hue{to{filter:hue-rotate(25deg)}}
-@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
-@keyframes grow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+h1,h2,h3{font-family:var(--head);margin:0;line-height:1.08}
+
+/* menu */
+nav{flex:none;background:var(--nav);display:flex;align-items:center;gap:.25rem;padding:.55rem clamp(.75rem,3vw,2rem);overflow-x:auto;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+.brand{font:700 1.1rem var(--head);color:var(--accent);margin-right:auto;white-space:nowrap;letter-spacing:.01em}
+nav a{position:relative;font:500 .88rem var(--body);color:var(--nav-ink);text-decoration:none;padding:.5rem .85rem;border-radius:999px;white-space:nowrap;opacity:.8;transition:opacity .25s,background .25s,color .25s}
+nav a:hover{opacity:1;background:#ffffff1c}
+nav a:focus-visible,.pager a:focus-visible,.pager button:focus-visible,.upload:focus-within{outline:2px solid var(--accent);outline-offset:2px}
+nav a.active{background:var(--accent);color:var(--accent-ink);opacity:1;font-weight:700}
+
+/* stage: one screen per page, no page scroll */
+main{flex:1;min-height:0;position:relative}
+.page{display:none;height:100%;padding:clamp(1rem,3.5vh,2.5rem) clamp(1rem,5vw,4rem);overflow-y:auto;scrollbar-width:none}
+.page::-webkit-scrollbar{display:none}
+.page.show{display:flex;flex-direction:column;justify-content:center;animation:slideR .6s cubic-bezier(.2,.7,.2,1) both}
+.page.show.back{animation-name:slideL}
+@keyframes slideR{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:none}}
+@keyframes slideL{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:none}}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 @keyframes pop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
-@keyframes shimmer{to{background-position:200% 0}}
-.page.show h1,.page.show h2,.page.show .lead,.page.show .btn,.page.show .photo-wrap{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
-.page.show .lead{animation-delay:.12s}.page.show .btn{animation-delay:.24s}
-.page.show dt,.page.show dd,.page.show .timeline li,.page.show .card{animation:rise .6s cubic-bezier(.2,.7,.2,1) both}
-.page.show dt:nth-of-type(1),.page.show dd:nth-of-type(1),.page.show .timeline li:nth-child(1),.page.show .card:nth-child(1){animation-delay:.1s}
-.page.show dt:nth-of-type(2),.page.show dd:nth-of-type(2),.page.show .timeline li:nth-child(2),.page.show .card:nth-child(2){animation-delay:.2s}
-.page.show dt:nth-of-type(3),.page.show dd:nth-of-type(3),.page.show .timeline li:nth-child(3),.page.show .card:nth-child(3){animation-delay:.3s}
-.page.show dt:nth-of-type(4),.page.show dd:nth-of-type(4),.page.show .card:nth-child(4){animation-delay:.4s}
-.page.show dt:nth-of-type(5),.page.show dd:nth-of-type(5){animation-delay:.5s}
-.page.show dt:nth-of-type(6),.page.show dd:nth-of-type(6){animation-delay:.6s}
-.page.show dt:nth-of-type(7),.page.show dd:nth-of-type(7){animation-delay:.7s}
-.page.show dt:nth-of-type(8),.page.show dd:nth-of-type(8){animation-delay:.8s}
-.page.show .timeline{animation:grow .9s ease-out both;transform-origin:top}
-.page.show .avatar{animation:pop .5s .35s cubic-bezier(.3,1.6,.5,1) both}
-h2{position:relative;display:inline-block}
-h2::after{content:"";position:absolute;left:0;bottom:-.35rem;height:5px;width:100%;border-radius:3px;background:linear-gradient(90deg,var(--accent-strong),var(--accent),var(--accent-strong));background-size:200% 100%;animation:shimmer 3s linear infinite}
-h1{background:linear-gradient(90deg,var(--ink) 0%,var(--accent-strong) 50%,var(--ink) 100%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:rise .7s cubic-bezier(.2,.7,.2,1) both,shimmer 6s linear infinite}
-nav a{transition:background .25s,color .25s,transform .25s}
-nav a:hover{transform:translateY(-2px)}
-.card{transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s,border-color .3s}
-.card:hover{transform:translateY(-6px);border-color:var(--accent-strong);box-shadow:0 14px 30px -12px var(--accent-strong)}
-.btn{transition:transform .25s,background .25s,color .25s,box-shadow .25s}
-.btn:hover{transform:translateY(-3px);background:var(--accent);color:var(--accent-ink);box-shadow:0 10px 24px -8px var(--accent-strong)}
-.avatar{transition:transform .3s}.member:hover .avatar{transform:rotate(-8deg) scale(1.1)}
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}h1{-webkit-text-fill-color:var(--ink)}}
+@keyframes drift{from{transform:scale(1.04)}to{transform:scale(1.14) translate(-1.5%,-1%)}}
+@keyframes grow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes underline{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+.eyebrow{font:700 .78rem var(--body);letter-spacing:.18em;text-transform:uppercase;color:var(--accent-strong);margin-bottom:.6rem}
+h2{font-size:clamp(1.8rem,5vh + .6rem,3rem);font-weight:700;margin-bottom:clamp(.9rem,3vh,1.8rem);position:relative;width:max-content;max-width:100%}
+h2::after{content:"";position:absolute;left:0;bottom:-.4rem;height:4px;width:100%;border-radius:2px;background:linear-gradient(90deg,var(--terra),var(--mustard),var(--accent));transform-origin:left;animation:underline .8s .3s cubic-bezier(.2,.7,.2,1) both}
+.page.show .eyebrow,.page.show h2{animation:rise .6s .05s cubic-bezier(.2,.7,.2,1) both}
+
+/* home: photo is 2/3 of the screen */
+#home{overflow:hidden}
+#home.show{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,6fr);grid-template-rows:minmax(0,1fr);gap:clamp(1.5rem,5vw,5rem);align-items:center;justify-content:stretch}
+.photo-panel{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--terra),var(--rose) 45%,var(--accent));display:grid;place-items:center;min-height:0;height:min(100%,460px);aspect-ratio:4/5;max-width:100%;justify-self:center;border-radius:160px 160px 24px 24px;box-shadow:0 24px 50px -24px var(--ink)}
+.photo-img{position:absolute;inset:0;background:center/cover no-repeat;opacity:0;transition:opacity .5s}
+.photo-panel.has .photo-img{opacity:1;animation:drift 20s ease-in-out infinite alternate}
+.initials{font:700 clamp(6rem,24vh,16rem) var(--head);color:#fff;opacity:.55;letter-spacing:-.03em;animation:pop .9s .2s cubic-bezier(.3,1.4,.5,1) both}
+.photo-panel.has .initials{display:none}
+.photo-panel::after{content:"";position:absolute;inset:auto 0 0;height:35%;background:linear-gradient(transparent,#491f4099);pointer-events:none}
+.caption{position:absolute;left:clamp(1rem,3vw,2.5rem);bottom:clamp(.9rem,3vh,2rem);z-index:2;color:#fff;font:500 .85rem var(--body);letter-spacing:.12em;text-transform:uppercase}
+.upload{position:absolute;top:clamp(.7rem,2vh,1.4rem);right:clamp(.7rem,2vw,1.4rem);z-index:2;background:#ffffffe6;color:#491f40;font:700 .8rem var(--body);padding:.5rem .9rem;border-radius:999px;cursor:pointer;transition:transform .25s,background .25s}
+.upload:hover{transform:translateY(-2px);background:#fff}
+.upload input{position:absolute;opacity:0;width:1px;height:1px}
+.intro{display:flex;flex-direction:column;justify-content:center;padding:0;min-width:0}
+.intro h1{font-size:clamp(2.2rem,6.5vh + .8rem,4.4rem);font-weight:700;letter-spacing:-.02em}
+.intro h1 em{font-style:italic;font-weight:500;color:var(--accent-strong)}
+.lead{color:var(--muted);margin:clamp(.7rem,2.5vh,1.4rem) 0 clamp(1rem,3vh,1.8rem)}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:clamp(.8rem,2.5vh,1.4rem);margin-bottom:clamp(1rem,3.5vh,2rem)}
+.chip{font:500 .8rem var(--body);padding:.35rem .8rem;border-radius:999px;border:1px solid var(--line);background:var(--surface);transition:transform .25s,border-color .25s}
+.chip:hover{transform:translateY(-3px) rotate(-2deg);border-color:var(--accent-strong)}
+.page.show .intro>*{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+.page.show .intro>:nth-child(2){animation-delay:.1s}.page.show .intro>:nth-child(3){animation-delay:.2s}.page.show .intro>:nth-child(4){animation-delay:.3s}.page.show .intro>:nth-child(5){animation-delay:.4s}
+
+.btn{align-self:flex-start;display:inline-flex;align-items:center;gap:.5rem;font:700 .95rem var(--body);background:var(--ink);color:var(--bg);padding:.8rem 1.4rem;border-radius:999px;text-decoration:none;transition:transform .25s,background .25s,color .25s,box-shadow .25s}
+.btn:hover{transform:translateY(-3px);background:var(--accent);color:var(--accent-ink);box-shadow:0 10px 24px -10px var(--accent-strong)}
+.btn:focus-visible{outline:2px solid var(--accent-strong);outline-offset:3px}
+
+/* content blocks */
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:clamp(.5rem,1.6vh,1rem)}
+.fact{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--terra);border-radius:10px;padding:clamp(.5rem,1.6vh,.9rem) 1rem;transition:transform .3s,box-shadow .3s}
+.fact:nth-child(4n+2){border-left-color:var(--mustard)}.fact:nth-child(4n+3){border-left-color:var(--rose)}.fact:nth-child(4n){border-left-color:var(--accent)}
+.fact span{display:block;font:700 .72rem var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.fact b{font:500 1.05rem var(--body)}
+.timeline{list-style:none;margin:0;padding:0 0 0 1.5rem;border-left:3px solid var(--accent);animation:grow .9s ease-out both;transform-origin:top}
+.timeline li{position:relative;padding-bottom:clamp(.9rem,3.5vh,2rem)}
+.timeline li:last-child{padding-bottom:0}
+.timeline li::before{content:"";position:absolute;left:calc(-1.5rem - 8px);top:.4rem;width:13px;height:13px;border-radius:50%;background:var(--bg);border:3px solid var(--accent-strong)}
+.when{font:700 .78rem var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--accent-strong)}
+.timeline h3{font-size:1.35rem;margin:.15rem 0}
+.timeline p,.card p{margin:.2rem 0 0;color:var(--muted);max-width:60ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:clamp(.6rem,2vh,1.25rem)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:clamp(.8rem,2.4vh,1.4rem);transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s,border-color .3s}
+.card:hover,.fact:hover{transform:translateY(-5px);border-color:var(--accent-strong);box-shadow:0 14px 28px -14px var(--accent-strong)}
+.card h3{font-size:1.2rem;margin-bottom:.1rem}
+.badge{font:700 clamp(1.6rem,4vh,2.2rem) var(--head);color:var(--accent-strong)}
+.member{display:flex;gap:1rem;align-items:center}
+.avatar{flex:none;width:52px;height:52px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;font:700 1.25rem var(--head);transition:transform .3s}
+.member:hover .avatar{transform:rotate(-8deg) scale(1.1)}
+.page.show .fact,.page.show .card,.page.show .timeline li{animation:rise .6s cubic-bezier(.2,.7,.2,1) both}
+.page.show .avatar{animation:pop .5s .4s cubic-bezier(.3,1.6,.5,1) both}
+.page.show :nth-child(1){animation-delay:.12s}.page.show :nth-child(2){animation-delay:.2s}.page.show :nth-child(3){animation-delay:.28s}.page.show :nth-child(4){animation-delay:.36s}.page.show :nth-child(5){animation-delay:.44s}.page.show :nth-child(6){animation-delay:.52s}.page.show :nth-child(7){animation-delay:.6s}.page.show :nth-child(8){animation-delay:.68s}
+
+#family .grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr))}
+.parent{display:flex;align-items:center;gap:clamp(1rem,2vw,1.6rem)}
+.parent h3{font-size:1.5rem}
+.pphoto{position:relative;flex:none;height:min(38vh,300px);aspect-ratio:4/5;border-radius:90px 90px 14px 14px;overflow:hidden;cursor:pointer;background:linear-gradient(135deg,var(--terra),var(--rose) 50%,var(--accent));display:grid;place-items:center;transition:transform .3s,box-shadow .3s}
+.pphoto:hover{transform:scale(1.03);box-shadow:0 16px 30px -16px var(--ink)}
+.pphoto:focus-within{outline:2px solid var(--accent-strong);outline-offset:3px}
+.pimg{position:absolute;inset:0;background:center/cover no-repeat;opacity:0;transition:opacity .4s}
+.pphoto.has .pimg{opacity:1}.pphoto.has .pinit{display:none}
+.pinit{font:700 clamp(3rem,10vh,5rem) var(--head);color:#fff;opacity:.6}
+.padd{position:absolute;left:50%;bottom:.6rem;transform:translateX(-50%);background:#ffffffe6;color:#491f40;font:700 .72rem var(--body);padding:.3rem .7rem;border-radius:99px;white-space:nowrap}
+.pphoto input{position:absolute;opacity:0;width:1px;height:1px}
+@media (max-width:760px){.pphoto{height:min(24vh,190px)}}
+/* pager */
+.pager{flex:none;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.7rem clamp(1rem,4vw,3rem);background:var(--surface);border-top:1px solid var(--line)}
+.pbtn{display:inline-flex;align-items:center;gap:.5rem;font:700 .92rem var(--body);color:var(--ink);background:transparent;border:2px solid var(--ink);padding:.55rem 1.1rem;border-radius:999px;cursor:pointer;text-decoration:none;transition:transform .25s,background .25s,color .25s,border-color .25s,opacity .25s}
+.pbtn.next{background:var(--ink);color:var(--bg)}
+.pbtn:hover:not([aria-disabled="true"]){background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.pbtn .arr{display:inline-block;transition:transform .25s}
+.pbtn.next:hover .arr{transform:translateX(4px)}.pbtn.back:hover .arr{transform:translateX(-4px)}
+.pbtn[aria-disabled="true"]{opacity:.35;pointer-events:none}
+.dots{display:flex;align-items:center;gap:.6rem}
+.dots a{width:10px;height:10px;border-radius:99px;background:var(--line);transition:width .35s,background .35s}
+.dots a:hover{background:var(--rose)}
+.dots a.active{width:28px;background:var(--accent-strong)}
+.count{font:700 .78rem var(--body);letter-spacing:.14em;color:var(--muted);margin-left:.4rem}
+
+@media (max-width:760px){
+  #home.show{grid-template-columns:1fr;grid-template-rows:minmax(0,5fr) minmax(0,4fr);gap:1rem}
+  .photo-panel{border-radius:100px 100px 18px 18px}
+  .intro{padding:0}.chips{display:none}.lead{margin:.5rem 0 .8rem}
+  .pbtn span.t{display:none}.count{display:none}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
@@ -101,31 +152,38 @@ nav a:hover{transform:translateY(-2px)}
 
 <main>
   <section id="home" class="page">
-    <div class="hero">
-      <div>
-        <h1>Hello, I’m Your Name.</h1>
-        <p class="lead">A short sentence about who you are and what you care about. Replace this with your own introduction.</p>
-        <a class="btn" href="#achievements">See my achievements</a>
-      </div>
-      <div class="photo" aria-label="Profile photo placeholder">YN</div>
+    <div class="photo-panel" id="photoPanel">
+      <div class="photo-img" id="photoImg"></div>
+      <div class="initials" aria-hidden="true">YN</div>
+      <label class="upload">Add your photo<input type="file" accept="image/*" id="photoInput"></label>
+      <div class="caption">Your Name · Your Title</div>
+    </div>
+    <div class="intro">
+      
+      <h1>Hello, I’m <em>Your Name.</em></h1>
+      
+      <div class="chips"><span class="chip">Student</span><span class="chip">Creative</span><span class="chip">Lifelong learner</span></div>
+      <a class="btn" href="#personal-details">Start the tour <span aria-hidden="true">→</span></a>
     </div>
   </section>
 
   <section id="personal-details" class="page">
+    <div class="eyebrow">02 · About me</div>
     <h2>Personal details</h2>
-    <dl>
-      <dt>Full name</dt><dd>Your Full Name</dd>
-      <dt>Date of birth</dt><dd>January 1, 2000</dd>
-      <dt>Place of birth</dt><dd>Your City, Country</dd>
-      <dt>Address</dt><dd>Your Town, Province, Country</dd>
-      <dt>Email</dt><dd>you@example.com</dd>
-      <dt>Phone</dt><dd>+00 000 000 0000</dd>
-      <dt>Languages</dt><dd>English, Filipino, Ilocano</dd>
-      <dt>Hobbies</dt><dd>Reading, music, travel</dd>
-    </dl>
+    <div class="facts">
+      <div class="fact"><span>Full name</span><b>Your Full Name</b></div>
+      <div class="fact"><span>Date of birth</span><b>January 1, 2000</b></div>
+      <div class="fact"><span>Place of birth</span><b>Your City, Country</b></div>
+      <div class="fact"><span>Address</span><b>Your Town, Province, Country</b></div>
+      <div class="fact"><span>Email</span><b>you@example.com</b></div>
+      <div class="fact"><span>Phone</span><b>+00 000 000 0000</b></div>
+      <div class="fact"><span>Languages</span><b>English, Filipino, Ilocano</b></div>
+      <div class="fact"><span>Hobbies</span><b>Reading, music, travel</b></div>
+    </div>
   </section>
 
   <section id="education" class="page">
+    <div class="eyebrow">03 · My journey</div>
     <h2>Education</h2>
     <ul class="timeline">
       <li><span class="when">2022 – Present</span><h3>College or University Name</h3><p>Degree or course, for example Bachelor of Science in Your Field.</p></li>
@@ -135,6 +193,7 @@ nav a:hover{transform:translateY(-2px)}
   </section>
 
   <section id="achievements" class="page">
+    <div class="eyebrow">04 · Highlights</div>
     <h2>Achievements</h2>
     <div class="grid">
       <div class="card"><div class="badge">2024</div><h3>Award or recognition</h3><p>Describe what you did and why it mattered.</p></div>
@@ -145,34 +204,82 @@ nav a:hover{transform:translateY(-2px)}
   </section>
 
   <section id="family" class="page">
+    <div class="eyebrow">05 · My people</div>
     <h2>Family</h2>
     <div class="grid">
-      <div class="card member"><div class="avatar">M</div><div><h3>Mother’s Name</h3><p>Mother · Her occupation or a short note.</p></div></div>
-      <div class="card member"><div class="avatar">F</div><div><h3>Father’s Name</h3><p>Father · His occupation or a short note.</p></div></div>
-      <div class="card member"><div class="avatar">S</div><div><h3>Sibling’s Name</h3><p>Brother or sister · Age or a short note.</p></div></div>
-      <div class="card member"><div class="avatar">G</div><div><h3>Grandparent’s Name</h3><p>Grandparent · A short note.</p></div></div>
+      <div class="card parent"><label class="pphoto" data-key="mother"><div class="pimg"></div><span class="pinit" aria-hidden="true">M</span><span class="padd">Add photo</span><input type="file" accept="image/*"></label><div><h3>Mother’s Name</h3><p>Mother · Her occupation or a short note.</p></div></div>
+      <div class="card parent"><label class="pphoto" data-key="father"><div class="pimg"></div><span class="pinit" aria-hidden="true">F</span><span class="padd">Add photo</span><input type="file" accept="image/*"></label><div><h3>Father’s Name</h3><p>Father · His occupation or a short note.</p></div></div>
+      
+      
     </div>
   </section>
 </main>
-<footer>© <span id="yr">2026</span> Your Name. All rights reserved.</footer>
+
+<div class="pager">
+  <a class="pbtn back" id="back" href="#home"><span class="arr" aria-hidden="true">←</span><span class="t">Back</span></a>
+  <div class="dots" id="dots" aria-label="Pages"></div>
+  <a class="pbtn next" id="next" href="#personal-details"><span class="t">Next</span><span class="arr" aria-hidden="true">→</span></a>
+</div>
 
 <script>
 (function(){
+  // To use your own photo in the exported file, put its file name here, e.g. "me.jpg"
+  var PHOTO_SRC="";
   var ids=["home","personal-details","education","achievements","family"];
+  var names=["Home","Personal details","Education","Achievements","Family"];
+  var cur=0, first=true;
+  var dots=document.getElementById("dots");
+  ids.forEach(function(id,i){
+    var a=document.createElement("a");
+    a.href="#"+id; a.setAttribute("aria-label",names[i]); a.title=names[i];
+    dots.appendChild(a);
+  });
+  var count=document.createElement("span"); count.className="count"; dots.appendChild(count);
+
+  function idx(){var h=(location.hash||"#home").slice(1);var i=ids.indexOf(h);return i<0?0:i}
   function show(){
-    var h=(location.hash||"#home").slice(1);
-    if(ids.indexOf(h)<0)h="home";
-    ids.forEach(function(id){
-      document.getElementById(id).classList.toggle("show",id===h);
+    var n=idx(), back=!first && n<cur;
+    ids.forEach(function(id,i){
+      var el=document.getElementById(id);
+      el.classList.remove("show","back");
+      if(i===n){void el.offsetWidth; el.classList.add("show"); if(back)el.classList.add("back"); el.scrollTop=0;}
     });
-    document.querySelectorAll("nav a").forEach(function(a){
-      a.classList.toggle("active",a.getAttribute("href")==="#"+h);
-    });
-    window.scrollTo(0,0);
+    document.querySelectorAll("nav a").forEach(function(a,i){a.classList.toggle("active",i===n)});
+    dots.querySelectorAll("a").forEach(function(a,i){a.classList.toggle("active",i===n)});
+    count.textContent="0"+(n+1)+" / 05";
+    var b=document.getElementById("back"), x=document.getElementById("next");
+    b.href="#"+ids[Math.max(0,n-1)]; x.href="#"+ids[Math.min(ids.length-1,n+1)];
+    b.setAttribute("aria-disabled",n===0?"true":"false");
+    x.setAttribute("aria-disabled",n===ids.length-1?"true":"false");
+    cur=n; first=false;
   }
   window.addEventListener("hashchange",show);
+  document.addEventListener("keydown",function(e){
+    if(e.target&&/INPUT|TEXTAREA/.test(e.target.tagName))return;
+    if(e.key==="ArrowRight"&&cur<ids.length-1)location.hash=ids[cur+1];
+    if(e.key==="ArrowLeft"&&cur>0)location.hash=ids[cur-1];
+  });
   show();
-  document.getElementById("yr").textContent=new Date().getFullYear();
+
+  // To use your parents' photos in the exported file, put the file names here, e.g. mother:"mom.jpg"
+  var FAMILY_PHOTOS={mother:"",father:""};
+  document.querySelectorAll(".pphoto").forEach(function(s){
+    var pi=s.querySelector(".pimg"), key=s.getAttribute("data-key");
+    function set(src){pi.style.backgroundImage='url("'+src+'")';s.classList.add("has")}
+    if(FAMILY_PHOTOS[key])set(FAMILY_PHOTOS[key]);
+    s.querySelector("input").addEventListener("change",function(e){
+      var f=e.target.files&&e.target.files[0]; if(!f)return;
+      try{var r=new FileReader();r.onload=function(){set(r.result)};r.readAsDataURL(f)}catch(err){}
+    });
+  });
+
+  var panel=document.getElementById("photoPanel"), img=document.getElementById("photoImg");
+  function setPhoto(src){img.style.backgroundImage='url("'+src+'")';panel.classList.add("has")}
+  if(PHOTO_SRC)setPhoto(PHOTO_SRC);
+  document.getElementById("photoInput").addEventListener("change",function(e){
+    var f=e.target.files&&e.target.files[0]; if(!f)return;
+    try{var r=new FileReader();r.onload=function(){setPhoto(r.result)};r.readAsDataURL(f)}catch(err){}
+  });
 })();
 </script>
 </body>
