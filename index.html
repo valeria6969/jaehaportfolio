@@ -3,21 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Jae-ha Ebba Portfolio</title>
+<title>Jae-ha Ebba Portfolio · Night Garden</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap">
 <style>
 :root{
-  --bg:#f7f1ed; --surface:#ffffff; --ink:#491f40; --muted:#6e4f66; --line:#dbccc6;
-  --accent:#e0c188; --accent-strong:#b8702a; --accent-ink:#491f40; --nav:#491f40; --nav-ink:#f7f1ed;
-  --terra:#d6866b; --rose:#dba79c; --mustard:#ce8936;
+  --bg:#0b1226; --surface:#131d3b; --ink:#e8f1ff; --muted:#9fb4d6; --line:#27386a;
+  --accent:#f2cf72; --accent-strong:#f2cf72; --accent-ink:#0b1226; --nav:#070d1d; --nav-ink:#e8f1ff;
+  --terra:#8a5cd0; --rose:#3c8aa6; --mustard:#3f6fe0;
   --head:"Fraunces",Georgia,"Times New Roman",serif;
   --body:"DM Sans","Helvetica Neue",Arial,sans-serif;
   box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
 }
 @media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){--bg:#1d0b1a;--surface:#2d1429;--ink:#f3e9e4;--muted:#cdb4b0;--line:#5a3552;--accent-strong:#e0c188;--nav:#140610;--nav-ink:#f3e9e4}
+  :root:not([data-theme="light"]){--bg:#0b1226;--surface:#131d3b;--ink:#e8f1ff;--muted:#9fb4d6;--line:#27386a;--accent-strong:#f2cf72;--nav:#070d1d;--nav-ink:#e8f1ff}
 }
-:root[data-theme="dark"]{--bg:#1d0b1a;--surface:#2d1429;--ink:#f3e9e4;--muted:#cdb4b0;--line:#5a3552;--accent-strong:#e0c188;--nav:#140610;--nav-ink:#f3e9e4}
+:root[data-theme="dark"]{--bg:#0b1226;--surface:#131d3b;--ink:#e8f1ff;--muted:#9fb4d6;--line:#27386a;--accent-strong:#f2cf72;--nav:#070d1d;--nav-ink:#e8f1ff}
 *{box-sizing:border-box}
 html,body{height:100%;margin:0}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
@@ -161,6 +161,8 @@ h2::after{content:"";position:absolute;left:0;bottom:-.4rem;height:4px;width:100
   .pbtn span.t{display:none}.count{display:none}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+body{background:radial-gradient(ellipse 60% 50% at 82% 18%,#2a52c944,transparent 70%),radial-gradient(ellipse 50% 40% at 10% 90%,#2c7a8a33,transparent 70%),var(--bg)}
+.pager,nav{backdrop-filter:blur(6px)}
 </style>
 </head>
 <body>
