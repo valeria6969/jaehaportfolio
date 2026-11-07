@@ -123,7 +123,7 @@ h2::after{content:"";position:absolute;left:0;bottom:-.4rem;height:4px;width:100
 .f1{grid-area:name}.f2{grid-area:dob}.f3{grid-area:pob}.f4{grid-area:addr}.f5{grid-area:mail}.f6{grid-area:tel}
 #personal-details .about{grid-area:about}#personal-details .works{grid-area:works}
 .fact b{overflow-wrap:anywhere}
-.about h3,.works h3{font-size:1.2rem;margin-bottom:.5rem}
+.about h3,.works h3,.interests h3,.skills-card h3{font-size:1.2rem;margin-bottom:.5rem}
 .about p{max-width:none;margin:0 0 1rem;font-size:.98rem;color:var(--ink)}
 .works ul{list-style:none;margin:0;padding:0;display:grid;gap:.6rem}
 .works li{position:relative;padding-left:1.1rem;font-size:.98rem}
@@ -131,6 +131,14 @@ h2::after{content:"";position:absolute;left:0;bottom:-.4rem;height:4px;width:100
 .works li b{display:block;font:700 1rem var(--body)}
 .works li span{color:var(--muted);font-size:.9rem}
 @media (max-width:760px){#personal-details .facts{grid-template-columns:1fr;grid-template-areas:"name" "dob" "pob" "addr" "mail" "tel" "about" "works"}}
+.details3{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(.7rem,2vh,1.25rem);align-items:start}
+.details3 .col{display:flex;flex-direction:column;gap:clamp(.45rem,1.3vh,.8rem);min-width:0}
+.details3 .pair{display:grid;grid-template-columns:1fr 1fr;gap:clamp(.45rem,1.3vh,.8rem)}
+.details3 .fact{padding:clamp(.4rem,1.2vh,.7rem) 1rem}
+.details3 .card{padding:clamp(.8rem,2vh,1.2rem)}
+.details3 .card p{font-size:.95rem}
+.skills{display:flex;flex-wrap:wrap;gap:.45rem}
+.padd:empty{display:none}
 /* pager */
 .pager{flex:none;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.7rem clamp(1rem,4vw,3rem);background:var(--surface);border-top:1px solid var(--line)}
 .pbtn{display:inline-flex;align-items:center;gap:.5rem;font:700 .92rem var(--body);color:var(--ink);background:transparent;border:2px solid var(--ink);padding:.55rem 1.1rem;border-radius:999px;cursor:pointer;text-decoration:none;transition:transform .25s,background .25s,color .25s,border-color .25s,opacity .25s}
@@ -186,15 +194,25 @@ h2::after{content:"";position:absolute;left:0;bottom:-.4rem;height:4px;width:100
   <section id="personal-details" class="page">
     <div class="eyebrow">02 · About me</div>
     <h2>Personal details</h2>
-    <div class="facts">
-      <div class="fact f1"><span>Full name</span><b>Jae-ha Philip Salimbao Ebba</b></div>
-      <div class="fact f2"><span>Date of birth</span><b>August 20, 2008</b></div>
-      <div class="fact f3"><span>Place of birth</span><b>Baguio City, Benguet</b></div>
-      <div class="fact f4"><span>Address</span><b>Happy Hollow 76 Purok 1</b></div>
-      <div class="fact f5"><span>Email</span><b>jaehaebba@gmail.com</b></div>
-      <div class="fact f6"><span>Phone no.</span><b>09150336144</b></div>
-      <div class="card works"><h3>Recent works</h3><ul><li><b>Digital portfolio website</b><span>A personal portfolio built with HTML, CSS and JavaScript.</span></li><li><b>Python works</b><span>Wrote a simple program for a class attendance.</span></li><li><b>Recently worked for city hall under the office of Aliping</b><span>Built a more adept routine and learned how to work with people better as an assistant</span></li></ul></div>
-      <div class="card about"><h3>About me</h3><p>Hello! I’m Jae-ha, a first-year student at the University of the Cordilleras taking a Bachelor of Science in Information Technology, majoring in Network and Security. If you have any questions or inquiries that concern me, feel free to reach out through my Facebook using the link below.</p><a class="btn" href="https://www.facebook.com/jaeha.ebba" target="_blank" rel="noopener">Message me on Facebook <span aria-hidden="true">→</span></a></div>
+    <div class="details3">
+      <div class="col">
+        <div class="fact"><span>Full name</span><b>Jae-ha Philip Salimbao Ebba</b></div>
+        <div class="pair">
+          <div class="fact"><span>Age</span><b>18</b></div>
+          <div class="fact"><span>Nationality</span><b>Filipino</b></div>
+        </div>
+        <div class="fact"><span>Place of birth</span><b>Baguio City, Benguet</b></div>
+        <div class="fact"><span>Email</span><b>jaehaebba@gmail.com</b></div>
+        <div class="fact"><span>Languages</span><b>English, Filipino</b></div>
+      </div>
+      <div class="col">
+        <div class="card about"><h3>About me</h3><p>Hello! I’m Jae-ha, a first-year student at the University of the Cordilleras taking a Bachelor of Science in Information Technology, majoring in Network and Security. If you have any questions or inquiries that concern me, feel free to reach out through my Facebook using the link below.</p><a class="btn" href="https://www.facebook.com/jaeha.ebba" target="_blank" rel="noopener">Message me on Facebook <span aria-hidden="true">→</span></a></div>
+        <div class="card interests"><h3>Hobbies &amp; interests</h3><p>Outside of class I enjoy tinkering with computers and networks, following cybersecurity news, and building small websites and programs just for fun.</p></div>
+      </div>
+      <div class="col">
+        <div class="card works"><h3>Recent works</h3><ul><li><b>Digital portfolio website</b><span>A personal portfolio built with HTML, CSS and JavaScript.</span></li><li><b>Python works</b><span>Wrote a simple program for a class attendance.</span></li><li><b>Recently worked for city hall under the office of Aliping</b><span>Built a more adept routine and learned how to work with people better as an assistant</span></li></ul></div>
+        <div class="card skills-card"><h3>Skills</h3><div class="skills"><span class="chip">Python basics</span><span class="chip">HTML &amp; CSS</span><span class="chip">Networking basics</span><span class="chip">Communication</span><span class="chip">Teamwork</span></div></div>
+      </div>
     </div>
   </section>
 
