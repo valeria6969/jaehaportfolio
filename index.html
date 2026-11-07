@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Jae-ha Ebba Portfolio</title>
+<title>Jae-ha Ebba Portfolio · Night Garden</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap">
 <style>
 :root{
@@ -139,6 +139,32 @@ h2::after{content:"";position:absolute;left:0;bottom:-.4rem;height:4px;width:100
 .details3 .card p{font-size:.95rem}
 .skills{display:flex;flex-wrap:wrap;gap:.45rem}
 .padd:empty{display:none}
+.pdgrid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(.7rem,2vh,1.25rem);align-items:start}
+.pdcol{display:flex;flex-direction:column;gap:clamp(.5rem,1.4vh,.8rem);min-width:0}
+.pdgrid .card{padding:clamp(.7rem,1.8vh,1.1rem)}
+.pdgrid .card p{font-size:.93rem}
+.pdgrid .sheet{padding:clamp(.4rem,1.2vh,.8rem) 1.2rem}
+.sheet:hover{transform:none;box-shadow:none;border-color:var(--line)}
+.info{margin:0}
+.info .row{display:grid;grid-template-columns:7.4rem minmax(0,1fr);gap:.8rem;align-items:baseline;padding:clamp(.12rem,.55vh,.32rem) 0;border-bottom:1px solid var(--line)}
+.info .row:last-child{border-bottom:0}
+.info dt{font:700 .7rem var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.info dd{margin:0;font:500 .95rem/1.35 var(--body);overflow-wrap:anywhere}
+.info dd.todo{color:var(--muted);font-style:italic}
+#personal-details{padding-top:clamp(.5rem,1.8vh,1.4rem);padding-bottom:clamp(.5rem,1.8vh,1.4rem)}
+#personal-details h2{margin-bottom:clamp(.7rem,2vh,1.1rem)}
+#personal-details .eyebrow{margin-bottom:.3rem}
+.page.show .info .row{animation:rise .5s cubic-bezier(.2,.7,.2,1) both}
+@media (max-width:900px){.pdgrid{grid-template-columns:1fr}}
+@media (max-width:520px){.info .row{grid-template-columns:1fr;gap:0}}
+.groups{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}
+.gcol{display:flex;flex-direction:column;gap:clamp(.5rem,1.6vh,1rem);min-width:0}
+.gh{display:flex;align-items:center;gap:.6rem;margin:0 0 .1rem;font:700 1rem var(--head);color:var(--accent-strong)}
+.gh::after{content:"";flex:1;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--terra),var(--accent) 60%,transparent)}
+.groups .info .row{grid-template-columns:1fr;gap:0;padding:clamp(.12rem,.5vh,.28rem) 0}
+.groups .info dt{font-size:.66rem}
+.groups .info dd{font-size:.93rem;line-height:1.3}
+@media (max-width:560px){.groups{grid-template-columns:1fr}}
 /* pager */
 .pager{flex:none;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.7rem clamp(1rem,4vw,3rem);background:var(--surface);border-top:1px solid var(--line)}
 .pbtn{display:inline-flex;align-items:center;gap:.5rem;font:700 .92rem var(--body);color:var(--ink);background:transparent;border:2px solid var(--ink);padding:.55rem 1.1rem;border-radius:999px;cursor:pointer;text-decoration:none;transition:transform .25s,background .25s,color .25s,border-color .25s,opacity .25s}
@@ -167,7 +193,7 @@ body{background:radial-gradient(ellipse 60% 50% at 82% 18%,#2a52c944,transparent
 </head>
 <body>
 <nav aria-label="Main menu">
-  <span class="brand">Jae-ha | Network & Security</span>
+  <span class="brand">Jae-ha</span>
   <a href="#home">Home</a>
   <a href="#personal-details">Personal details</a>
   <a href="#education">Education</a>
@@ -188,7 +214,7 @@ body{background:radial-gradient(ellipse 60% 50% at 82% 18%,#2a52c944,transparent
       
       
       <h1>JAE-HA PHILIP S. EBBA</h1>
-      <div class="chips"><span class="chip">Student</span><span class="chip">Visionary</span><span class="chip">Lifelong learner</span></div>
+      <div class="chips"><span class="chip">Student</span><span class="chip">Creative</span><span class="chip">Lifelong learner</span></div>
       
     </div>
   </section>
@@ -196,24 +222,13 @@ body{background:radial-gradient(ellipse 60% 50% at 82% 18%,#2a52c944,transparent
   <section id="personal-details" class="page">
     <div class="eyebrow">02 · About me</div>
     <h2>Personal details</h2>
-    <div class="details3">
-      <div class="col">
-        <div class="fact"><span>Full name</span><b>Jae-ha Philip Salimbao Ebba</b></div>
-                  <div class="pair">
-          <div class="fact"><span>Age</span><b>18</b></div>
-          <div class="fact"><span>Nationality</span><b>Filipino</b></div>
-        </div>
-        <div class="fact"><span>Place of birth</span><b>Baguio City, Benguet</b></div>
-        <div class="fact"><span>Email</span><b>jaehaebba@gmail.com</b></div>
-        <div class="fact"><span>Languages</span><b>English, Filipino</b></div>
+    <div class="pdgrid">
+      <div class="pdcol">
+        <div class="card sheet"><div class="groups"><div class="gcol"><div class="group"><h4 class="gh">Personal information</h4><dl class="info"><div class="row"><dt>Name</dt><dd>Jae-ha Philip Salimbao Ebba</dd></div><div class="row"><dt>Gender</dt><dd class="todo">Add your gender</dd></div><div class="row"><dt>Status</dt><dd class="todo">Add your civil status</dd></div><div class="row"><dt>Age</dt><dd>18</dd></div><div class="row"><dt>Birthday</dt><dd>August 20, 2008</dd></div></dl></div><div class="group"><h4 class="gh">Interests &amp; skills</h4><dl class="info"><div class="row"><dt>Hobbies</dt><dd>Tinkering with computers, following cybersecurity news, building small websites</dd></div><div class="row"><dt>Skills</dt><dd>Python basics and HTML &amp; CSS</dd></div></dl></div></div><div class="gcol"><div class="group"><h4 class="gh">Education</h4><dl class="info"><div class="row"><dt>Program</dt><dd>Bachelor of Science in Information Technology (Network and Security)</dd></div><div class="row"><dt>College</dt><dd>College of Information Technology and Computer Science</dd></div><div class="row"><dt>Year level</dt><dd>First year</dd></div><div class="row"><dt>School</dt><dd>University of the Cordilleras</dd></div></dl></div><div class="group"><h4 class="gh">Contact</h4><dl class="info"><div class="row"><dt>Address</dt><dd>Happy Hollow 76 Purok 1, Baguio City, Benguet</dd></div><div class="row"><dt>Email</dt><dd>jaehaebba@gmail.com</dd></div><div class="row"><dt>Phone number</dt><dd>09150336144</dd></div></dl></div></div></div></div>
       </div>
-      <div class="col">
+      <div class="pdcol">
         <div class="card about"><h3>About me</h3><p>Hello! I’m Jae-ha, a first-year student at the University of the Cordilleras taking a Bachelor of Science in Information Technology, majoring in Network and Security. If you have any questions or inquiries that concern me, feel free to reach out through my Facebook using the link below.</p><a class="btn" href="https://www.facebook.com/jaeha.ebba" target="_blank" rel="noopener">Message me on Facebook <span aria-hidden="true">→</span></a></div>
-        <div class="card interests"><h3>Hobbies &amp; interests</h3><p>Outside of class I enjoy tinkering with computers and networks, following cybersecurity news, and building small websites and programs just for fun.</p></div>
-      </div>
-      <div class="col">
         <div class="card works"><h3>Recent works</h3><ul><li><b>Digital portfolio website</b><span>A personal portfolio built with HTML, CSS and JavaScript.</span></li><li><b>Python works</b><span>Wrote a simple program for a class attendance.</span></li><li><b>Recently worked for city hall under the office of Aliping</b><span>Built a more adept routine and learned how to work with people better as an assistant</span></li></ul></div>
-        <div class="card skills-card"><h3>Skills</h3><div class="skills"><span class="chip">Python basics</span><span class="chip">HTML &amp; CSS</span><span class="chip">Networking basics</span><span class="chip">Communication</span><span class="chip">Teamwork</span></div></div>
       </div>
     </div>
   </section>
